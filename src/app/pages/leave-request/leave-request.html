@@ -1,0 +1,90 @@
+<div class="container py-4">
+    <div class="row">
+        <!-- Left: list (col-7) -->
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header bg-warning text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Leave Requests</h5>
+                    <small class="text-white-50">Manage requests</small>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @for (item of leaveRequestList; track $index) {
+                        <div class="col-6"> 
+                            <div class="list-group">
+                                <div class="list-group-item list-group-item-action mb-2">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Leave: {{item.leaveType}}</h6>
+                                        <small class="text-muted">{{item.leaveDate |date:'dd-MM-yy'}}</small>
+                                    </div>
+                                      <p class="mb-1">From: {{item.fromDate|date:'dd-MM-yy'}} — To: {{item.toDate |date:'dd-MM-yy'}}</p> 
+                                    <div class="mt-2 d-flex">
+                                        <button class="btn btn-sm btn-outline-primary mr-2"><i class="fa fa-eye"></i>
+                                            View</button>
+                                        <button class="btn btn-sm btn-outline-secondary mr-2"><i
+                                                class="fa fa-pencil"></i>
+                                            Edit</button>
+                                        <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i>
+                                            Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        }
+                    </div>
+                    <!-- Use cards/list items for each leave request; replace static items with dynamic list in Angular later -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: form (col-5) -->
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0">Request Form</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Static form for layout only; do not add Angular bindings per request -->
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="fromDate">From</label>
+                                <input type="date" [(ngModel)]="newLeaveReqObj.fromDate" name="fromDate" id="fromDate"
+                                    class="form-control form-control-sm">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="toDate">To</label>
+                                <input type="date" [(ngModel)]="newLeaveReqObj.toDate" name="toDate"
+                                    class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="leaveType">Leave Type</label>
+                            <select class="form-select" [(ngModel)]="newLeaveReqObj.leaveType" name="leaveType"
+                                name="leaveType">
+                                <option value="">Select Leave Type</option>
+                                <option value="paidLeave">Paid Leave</option>
+                                <option value="sickLeave">Sick Leave</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="reason">Reason</label>
+                            <textarea id="reason" [(ngModel)]="newLeaveReqObj.reason" name="reason"
+                                class="form-control form-control-sm" rows="3" placeholder="Reason for leave"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-primary" (click)="onSaveRequest()">Submit</button>
+                            <div>
+                                <button type="reset" class="btn btn-secondary mr-2">Reset</button>
+                                <button type="button" class="btn btn-outline-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

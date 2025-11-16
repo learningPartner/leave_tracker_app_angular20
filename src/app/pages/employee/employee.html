@@ -1,0 +1,136 @@
+<div class="container mt-4">
+    <div class="row">
+        <!-- Table column (col-7) -->
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center bg-warning">
+                    <h5 class="mb-0">Employees</h5>
+                    <div>
+                        <div class="input-group input-group-sm" style="width:260px;">
+                            <input type="text" class="form-control" placeholder="Search employees...">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button"><i
+                                        class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Dept</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of employeeList; track $index) {
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.empName}}</td>
+                                    <td>{{item.designation}}</td>
+                                    <td>{{item.contactNo}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>
+                                        <button (click)="onEdit(item)" class="btn btn-sm btn-primary mr-1" title="Edit"><i
+                                                class="fa fa-pencil"></i></button>
+                                        <button (click)="onDeletEmployee(item.empId)" class="btn btn-sm btn-danger" title="Delete"><i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form column (col-5) -->
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0">Employee Form</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Note: this is static HTML form for layout only. Do not add Angular bindings here as requested. -->
+                    <form>
+                        <div class="row">
+                            <div class=" col-12">
+                                <label for="empName">Name</label>
+                                <input type="text" [(ngModel)]="employeeObj.empName"
+                                    class="form-control form-control-sm" id="empName" name="empName"
+                                    placeholder="Employee name">
+                            </div>
+                            <div class=" col-6">
+                                <label for="contactNo">Contact</label>
+                                <input type="text" [(ngModel)]="employeeObj.contactNo"
+                                    class="form-control form-control-sm" id="contactNo" name="contactNo"
+                                    placeholder="Contact no">
+                            </div>
+                            <div class=" col-6">
+                                <label for="email">Email</label>
+                                <input type="email" [(ngModel)]="employeeObj.email" class="form-control form-control-sm"
+                                    id="email" name="email" placeholder="emailexample.com">
+                            </div>
+                            <div class=" col-6">
+                                <label for="deptName">Department</label>
+                                <input type="text" [(ngModel)]="employeeObj.deptName"
+                                    class="form-control form-control-sm" id="deptName" name="deptName"
+                                    placeholder="Department">
+                            </div>
+                            <div class=" col-6">
+                                <label for="designation">Designation</label>
+                                <input type="text" [(ngModel)]="employeeObj.designation"
+                                    class="form-control form-control-sm" id="designation" name="designation"
+                                    placeholder="Designation">
+                            </div>
+
+                            <div class=" col-12">
+                                <label for="userName">Username</label>
+                                <input type="text" [(ngModel)]="employeeObj.userName"
+                                    class="form-control form-control-sm" id="userName" name="userName"
+                                    placeholder="username">
+                            </div>
+                            <div class=" col-12">
+                                <label for="password">Password</label>
+                                <input type="password" [(ngModel)]="employeeObj.password"
+                                    class="form-control form-control-sm" id="password" name="password"
+                                    placeholder="password">
+                            </div>
+                             <div class=" col-12">
+                                <label for="password">role</label>
+                                <select class="form-select" [(ngModel)]="employeeObj.role" name="role">
+                                    <option value="">Select Role</option>
+                                     <option value="Employee">Employee</option>
+                                      <option value="Hr">Hr</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                @if (employeeObj.empId ==0) {
+                                      <button type="button" class="btn btn-success btn-sm" (click)="onSaveEmployee()"><i
+                                        class="fa fa-save"></i> Save</button>
+                                } @else {
+                                     <button type="button" class="btn btn-warning btn-sm" (click)="onUpdateEmployee()"><i
+                                        class="fa fa-save"></i> Update</button>
+                                }
+                              
+                               
+                                <button type="reset" class="btn btn-secondary btn-sm">Reset</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

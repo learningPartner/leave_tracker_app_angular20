@@ -1,0 +1,49 @@
+<div class="login-page d-flex align-items-center justify-content-center min-vh-100">
+	<div class="login-decor">
+		<div class="shape shape-1"></div>
+		<div class="shape shape-2"></div>
+	</div>
+
+	<div class="card login-card shadow-sm">
+		<div class="card-header text-center bg-transparent border-0">
+			<h3 class="mb-0">Welcome Back</h3>
+			<p class="text-muted small mb-0">Please sign in to continue</p>
+		</div>
+		<div class="card-body">
+			<form class="needs-validation"  [formGroup]="loginForm">
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" formControlName="userName" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username" required>
+					<div class="invalid-feedback">Please enter your username.</div>
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" formControlName="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" required>
+					<div class="invalid-feedback">Please enter your password.</div>
+				</div>
+
+				<div class="form-row align-items-center mb-3">
+					<div class="col-auto">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="remember">
+							<label class="form-check-label small" for="remember">Remember me</label>
+						</div>
+					</div>
+					<div class="col text-right">
+						<a class="small" href="#">Forgot password?</a>
+					</div>
+				</div>
+
+				<div class="d-flex justify-content-between align-items-center">
+					<button type="button" (click)="onLogin()" class="btn btn-primary btn-lg btn-block">Sign In</button>
+				</div>
+			</form>
+		</div>
+		<div class="card-footer text-center bg-transparent border-0 small text-muted">
+			© <span class="current-year"></span> Company Name
+		</div>
+	</div>
+</div>
+
+<!-- No external CSS/JS links added here (Bootstrap already included via project config) -->

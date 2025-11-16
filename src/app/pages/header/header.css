@@ -1,0 +1,71 @@
+:host, .app-shell {
+	height: 100vh;
+}
+
+.app-shell {
+	min-height: 100vh;
+}
+
+.sidebar {
+	width: 240px;
+	min-width: 240px;
+	transition: width .25s ease;
+	display: flex;
+	flex-direction: column;
+}
+
+.sidebar.collapsed {
+	width: 70px;
+	min-width: 70px;
+}
+
+.sidebar .brand {
+	font-weight: 600;
+}
+
+.sidebar .nav-link {
+	color: rgba(255,255,255,0.95);
+	padding: .5rem 0.75rem;
+}
+
+.sidebar .nav-link:hover {
+	background: rgba(255,255,255,0.03);
+	color: #fff;
+}
+
+.sidebar .fa {
+	width: 20px;
+	text-align: center;
+}
+
+.link-text {
+	transition: opacity .15s ease, width .15s ease;
+}
+
+.sidebar.collapsed .link-text {
+	opacity: 0;
+	width: 0;
+	display: inline-block;
+	visibility: hidden;
+}
+
+.sidebar .sidebar-footer {
+	margin-top: auto;
+}
+
+/* Make sure content area scrolls if necessary */
+.content {
+	overflow: auto;
+}
+
+@media (max-width: 767.98px) {
+	.sidebar {
+		position: absolute;
+		z-index: 1040;
+		height: 100vh;
+		transform: translateX(0);
+	}
+	.sidebar.collapsed {
+		transform: translateX(-100%);
+	}
+}

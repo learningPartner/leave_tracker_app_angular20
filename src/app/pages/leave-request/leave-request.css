@@ -1,0 +1,13 @@
+/* Small visual tweaks for leave-request page */
+
+.list-group-item .btn{ min-width: 80px; }
+
+.card-header.bg-warning{ background-color: #ffc107 !important; }
+
+.card{ border-radius: 6px; }
+
+@media (max-width: 767.98px){
+	.col-7, .col-5{ flex: 0 0 100%; max-width: 100%; }
+}
+
+/* End leave-request styles */
